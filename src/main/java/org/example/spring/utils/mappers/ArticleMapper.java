@@ -18,7 +18,7 @@ public interface ArticleMapper {
     @Mapping(source = "categorie", target = "category")
     ArticleOneResponse toDto2(Article article);
 
-    @Mapping(source = "category.id", target = "categorie.id") // Correction ici
+    @Mapping(source = "category.id", target = "categorie.id") 
     Article toEntity(ArticleOneResponse dto);
 
     @Mapping(source = "categorieId", target = "categorie.id")

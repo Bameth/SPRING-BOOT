@@ -6,6 +6,7 @@ import org.example.spring.data.entities.Client;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 public class ClientWithCommandeResponse {

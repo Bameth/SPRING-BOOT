@@ -15,6 +15,7 @@ public class CommandeSimpleResponse {
     private String ville;
     private String rue;
     private Double montant;
+    
     public CommandeSimpleResponse(Commande commande) {
         this.id = commande.getId();
         this.dateCommande = commande.getDateCommande();

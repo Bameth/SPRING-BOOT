@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.spring.data.entities.Categorie;
 import org.example.spring.services.ArticleService;
 import org.example.spring.services.CategorieService;
+import org.example.spring.utils.mappers.ArticleMapper;
 import org.example.spring.web.controllers.CategorieController;
 import org.example.spring.web.dto.response.ArticleAllResponse;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,8 @@ import java.util.List;
 public class CategorieControllerImpl implements CategorieController {
     private final CategorieService categorieService;
     private final ArticleService articleService;
+    private final ArticleMapper articleMapper;
+
 
     @Override
     public ResponseEntity<List<Categorie>> getAllCategories() {
@@ -52,7 +55,7 @@ public class CategorieControllerImpl implements CategorieController {
     @Override
     public ResponseEntity<List<ArticleAllResponse>> getAllArticlesByCategorie(Long idCategorie) {
         var articles = articleService.getAllArticlesByCategorie(idCategorie);
-        var articleResponse = articles.stream().map(ArticleAllResponse::new).toList();
+        var articleResponse = articles.stream().map(articleMapper::toDto).toList();
         return new ResponseEntity<>(articleResponse, HttpStatus.OK);
     }
 }

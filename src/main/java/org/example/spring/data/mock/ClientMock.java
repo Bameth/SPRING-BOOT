@@ -36,6 +36,7 @@ public class ClientMock implements CommandLineRunner {
                 commande.setVille("ville" + j);
                 commande.setStatut(j % 2 == 0 ? StatutEnum.ENCOURS : StatutEnum.LIVREE);
                 client.getCommandes().add(commande);
+                commande.setClient(client);
             }
             clientService.create(client);
 

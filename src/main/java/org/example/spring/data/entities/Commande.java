@@ -34,7 +34,7 @@ public class Commande {
     private Double montant;
     @Enumerated(value = EnumType.STRING)
     private StatutEnum statut;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Client client;
 
 }

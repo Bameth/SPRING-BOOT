@@ -10,7 +10,7 @@ GET http://localhost:9090/categorie/list
 <> 2025-01-11T181142.200.json
 <> 2025-01-11T180718.200.json
 ###
-GET http://localhost:9090/categorie/one/12
+GET http://localhost:9090/categorie/one/1
 
 <> 2025-01-11T181619.200.json
 <> 2025-01-11T181138.200.json
@@ -60,8 +60,8 @@ Content-Type: application/json
   "code": "CodeNameeCBN uui",
   "prix": 30007780.0,
   "qteStock": 6,
-  "categorie": {
-    "id": 6
+  "category": {
+    "id": 2
   }
 }
 
@@ -71,10 +71,28 @@ GET http://localhost:9090/categorie/1/articles
 <> 2025-01-15T040954.200.json
 
 ###
-GET http://localhost:9090/api/v1/clients?page=1&size=4
+GET http://localhost:9090/api/v1/clients?page=2&size=4
 
 ###
-GET http://localhost:9090/api/v1/clients/3
+GET http://localhost:9090/api/v1/clients
 
 ###
 GET http://localhost:9090/api/v1/clients/3/commandes
+
+###
+POST http://localhost:9090/api/v1/clients
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nomComplet": "ameth",
+  "telephone": "771234567",
+  "pays": "Senegal",
+  "ville": "Dakar",
+  "rue": "Rue 123"
+}
+
+###
+GET http://localhost:9090/api/v1/clients/2/commandes
+
+

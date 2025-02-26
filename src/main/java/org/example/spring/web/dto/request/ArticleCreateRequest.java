@@ -15,5 +15,5 @@ public class ArticleCreateRequest {
     private String name;
     private double prix;
     private Integer qteStock;
-    private Long categorieId; // On stocke juste l'ID
+    private Long categorieId;
 }

@@ -46,7 +46,7 @@ GET http://localhost:9090/article/list
 <> 2025-01-15T015931.200.json
 
 ###
-GET http://localhost:9090/article/one/21
+GET http://localhost:9090/article/one/12
 
 <> 2025-01-15T015925.200.json
 ###
@@ -71,7 +71,7 @@ GET http://localhost:9090/categorie/1/articles
 <> 2025-01-15T040954.200.json
 
 ###
-GET http://localhost:9090/api/v1/clients?page=2&size=4
+GET http://localhost:9090/api/v1/clients?page=0&size=4
 
 ###
 GET http://localhost:9090/api/v1/clients

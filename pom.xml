@@ -111,6 +111,9 @@
                             <version>0.2.0</version>
                         </path>
                     </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-Amapstruct.verbose=true</arg> <!-- Active le mode verbose -->
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>

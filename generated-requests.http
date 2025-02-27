@@ -64,7 +64,18 @@ Content-Type: application/json
     "id": 2
   }
 }
+###
+POST http://localhost:9090/article/create
+Accept: application/json
+Content-Type: application/json
 
+{
+  "name": "nem",
+  "code": "niaff si code",
+  "prix": 345.0,
+  "qteStock": 1,
+  "categorieId": 1
+}
 ###
 GET http://localhost:9090/categorie/1/articles
 
@@ -86,7 +97,7 @@ Content-Type: application/json
 
 {
   "nomComplet": "ameth",
-  "telephone": "771234567",
+  "telephone": "771234568",
   "pays": "Senegal",
   "ville": "Dakar",
   "rue": "Rue 123"

@@ -15,10 +15,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Articles", description = "Gestion des articles")
 public class ArticleControllerImpl implements ArticleController {
     private final ArticleService articleService;
     private final ArticleMapper articleMapper;
@@ -35,6 +37,9 @@ public class ArticleControllerImpl implements ArticleController {
     @Override
     public ResponseEntity<Map<String, Object>> getOne(Long id) {
         var article = articleService.getById(id);
+        if (article == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return ResponseEntity.ok(
                 RestResponse.response(HttpStatus.OK, articleMapper.toDto2(article), "ArticleOneResponse"));
     }

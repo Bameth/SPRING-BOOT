@@ -1,6 +1,5 @@
 package org.example.spring.services.impl;
 
-import java.util.Optional;
 
 import org.example.spring.data.entities.Client;
 import org.example.spring.data.repositories.ClientRepository;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -28,35 +28,32 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client update(Long id, Client clientRequest) {
-        Optional<Client> optionalData = clientRepository
-                .findById(id);
-        if (optionalData.isPresent()) {
-            var data = optionalData.get();
-            data.setNomComplet(clientRequest.getNomComplet());
-            data.setPays(clientRequest.getPays());
-            data.setRue(clientRequest.getRue());
-            data.setTelephone(clientRequest.getTelephone());
-            data.setVille(clientRequest.getVille());
-            return clientRepository.save(data);
-        }
-        return null;
+        Client client = clientRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Client avec l'ID " + id + " introuvable"));
+
+        client.setNomComplet(clientRequest.getNomComplet());
+        client.setPays(clientRequest.getPays());
+        client.setRue(clientRequest.getRue());
+        client.setTelephone(clientRequest.getTelephone());
+        client.setVille(clientRequest.getVille());
+
+        return clientRepository.save(client);
     }
 
     @Override
     public Client getById(Long id) {
-        return clientRepository.findById(id).orElse(null);
+        return clientRepository
+                .findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Client not found"));
     }
 
     @Override
     public boolean delete(Long id) {
-        Optional<Client> optionalData = clientRepository
-                .findById(id);
-        if (optionalData.isPresent()) {
-            var data = optionalData.get();
-            clientRepository.delete(data);
-            return true;
-        }
-        return false;
+        Client client = clientRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Client avec l'ID " + id + " introuvable"));
+
+        clientRepository.delete(client);
+        return true;
     }
 
     @Override
